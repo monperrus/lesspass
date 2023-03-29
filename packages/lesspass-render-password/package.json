@@ -10,7 +10,8 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf node_modules dist"
   },
   "dependencies": {
     "big-integer": "^1.6.48"

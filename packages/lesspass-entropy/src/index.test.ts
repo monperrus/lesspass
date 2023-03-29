@@ -1,11 +1,12 @@
-const assert = require("assert");
-const { calcEntropy, isSupported } = require("../src");
+import assert from "assert";
+import { calcEntropy, isSupported } from ".";
 
 describe("entropy", () => {
   it("calc entropy without crypto use default options and crypto", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
+      counter: 1,
     };
     const masterPassword = "password";
     return calcEntropy(profile, masterPassword).then((entropy) => {
@@ -19,18 +20,15 @@ describe("entropy", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
-      options: {
-        counter: 1,
-      },
-      crypto: {
-        method: "pbkdf2",
-        iterations: 100000,
-        keylen: 32,
-        digest: "sha256",
-      },
+      counter: 1,
     };
     const masterPassword = "password";
-    return calcEntropy(profile, masterPassword).then((entropy) => {
+    const crypto = {
+      iterations: 100000,
+      keylen: 32,
+      digest: "sha256",
+    };
+    return calcEntropy(profile, masterPassword, crypto).then((entropy) => {
       assert.equal(
         "dc33d431bce2b01182c613382483ccdb0e2f66482cbba5e9d07dab34acc7eb1e",
         entropy
@@ -41,18 +39,15 @@ describe("entropy", () => {
     const profile = {
       site: "example.org",
       login: "❤",
-      options: {
-        counter: 1,
-      },
-      crypto: {
-        method: "pbkdf2",
-        iterations: 100000,
-        keylen: 32,
-        digest: "sha256",
-      },
+      counter: 1,
     };
     const masterPassword = "I ❤ LessPass";
-    return calcEntropy(profile, masterPassword).then((entropy) => {
+    const crypto = {
+      iterations: 100000,
+      keylen: 32,
+      digest: "sha256",
+    };
+    return calcEntropy(profile, masterPassword, crypto).then((entropy) => {
       assert.equal(
         "4e66cab40690c01af55efd595f5963cc953d7e10273c01827881ebf8990c627f",
         entropy
@@ -63,47 +58,30 @@ describe("entropy", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
-      options: {
-        counter: 1,
-      },
-      crypto: {
-        method: "pbkdf2",
-        iterations: 8192,
-        keylen: 16,
-        digest: "sha512",
-      },
+      counter: 1,
     };
     const masterPassword = "password";
-    return calcEntropy(profile, masterPassword).then((entropy) => {
+    const crypto = {
+      method: "pbkdf2",
+      iterations: 8192,
+      keylen: 16,
+      digest: "sha512",
+    };
+    return calcEntropy(profile, masterPassword, crypto).then((entropy) => {
       assert.equal("fff211c16a4e776b3574c6a5c91fd252", entropy);
     });
   });
-  it("calc entropy different if counter different 1", () => {
+  it("calc entropy are different if counter are different", () => {
     const profile = {
       site: "example.org",
       login: "contact@example.org",
-      options: {
-        counter: 1,
-      },
-      crypto: {
-        method: "pbkdf2",
-        iterations: 100000,
-        keylen: 32,
-        digest: "sha256",
-      },
+      counter: 1,
     };
+
     const profile2 = {
       site: "example.org",
       login: "contact@example.org",
-      options: {
-        counter: 2,
-      },
-      crypto: {
-        method: "pbkdf2",
-        iterations: 100000,
-        keylen: 32,
-        digest: "sha256",
-      },
+      counter: 2,
     };
     const promises = [
       calcEntropy(profile, "password"),

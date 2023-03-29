@@ -8,7 +8,7 @@ export function stringToArrayBuffer(s: string) {
   return new Uint8Array(arrayBuffer);
 }
 
-export function arrayBufferToHex(arrayBuffer: Iterable<number>) {
+export function arrayBufferToHex(arrayBuffer: ArrayBuffer) {
   const byteArray = new Uint8Array(arrayBuffer);
   let str = "";
   for (let i = 0; i < byteArray.byteLength; i += 1) {

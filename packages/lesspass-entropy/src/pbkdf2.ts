@@ -1,6 +1,12 @@
-const crypto = require("crypto");
+import crypto from "crypto";
 
-module.exports = function pbkdf2(password, salt, iterations, keylen, digest) {
+export default function pbkdf2(
+  password: string,
+  salt: string,
+  iterations: number,
+  keylen: number,
+  digest: string
+):Promise<string> {
   return new Promise((resolve, reject) => {
     crypto.pbkdf2(password, salt, iterations, keylen, digest, (error, key) => {
       if (error) {
@@ -10,4 +16,4 @@ module.exports = function pbkdf2(password, salt, iterations, keylen, digest) {
       }
     });
   });
-};
+}

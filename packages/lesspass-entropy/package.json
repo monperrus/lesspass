@@ -1,6 +1,6 @@
 {
   "name": "lesspass-entropy",
-  "version": "9.1.9",
+  "version": "10.0.0",
   "description": "LessPass module used to generate entropy for password generation",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "license": "GPL-3.0",
@@ -14,9 +14,10 @@
   "scripts": {
     "test": "yarn test:unit && yarn test:browser",
     "test:unit": "mocha test --recursive",
-    "test:browser": "karma start test/karma.conf.js"
+    "test:browser": "karma start test/karma.conf.js",
+    "clean": "rm -rf node_modules"
   },
   "dependencies": {
-    "lesspass-crypto": "^9.2.0"
+    "lesspass-crypto": "workspace:*"
   }
 }

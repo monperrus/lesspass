@@ -1,14 +1,14 @@
-function stringToArrayBuffer(string) {
-  const base64String = unescape(encodeURIComponent(string));
+export function stringToArrayBuffer(string: string) {
+  const base64String = decodeURI(encodeURIComponent(string));
   const charList = base64String.split("");
-  const arrayBuffer = [];
+  const arrayBuffer: number[] = [];
   for (let i = 0; i < charList.length; i += 1) {
     arrayBuffer.push(charList[i].charCodeAt(0));
   }
   return new Uint8Array(arrayBuffer);
 }
 
-function arrayBufferToHex(arrayBuffer) {
+export function arrayBufferToHex(arrayBuffer: Iterable<number>) {
   const byteArray = new Uint8Array(arrayBuffer);
   let str = "";
   for (let i = 0; i < byteArray.byteLength; i += 1) {
@@ -17,7 +17,7 @@ function arrayBufferToHex(arrayBuffer) {
   return str;
 }
 
-module.exports = {
+export default {
   stringToArrayBuffer,
   arrayBufferToHex,
 };

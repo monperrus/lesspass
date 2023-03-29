@@ -1,8 +1,5 @@
-const assert = require("assert");
-const {
-  stringToArrayBuffer,
-  arrayBufferToHex,
-} = require("../src/stringEncoding");
+import assert from "assert";
+import { stringToArrayBuffer, arrayBufferToHex } from "../src/stringEncoding";
 
 describe("stringEncoding", () => {
   it("stringToArrayBuffer", () => {

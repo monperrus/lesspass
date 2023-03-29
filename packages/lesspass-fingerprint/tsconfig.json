@@ -5,8 +5,11 @@
     "moduleResolution": "node",
     "outDir": "dist",
     "rootDir": "src",
-    "composite": true
+    "composite": true,
+    "paths": {
+      "lesspass-crypto": ["../lesspass-crypto/src/index.ts"]
+    }
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"]
+  "references": [{ "path": "../lesspass-crypto" }]
 }

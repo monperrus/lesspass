@@ -1,5 +1,5 @@
-const assert = require("assert");
-const pbkdf2 = require("../src/pbkdf2");
+import assert from "assert";
+import pbkdf2 from "../src/pbkdf2";
 
 describe("pbkdf2", () => {
   it("secret, salt, 2 iterations, 32 keylen, sha256 hash", () =>

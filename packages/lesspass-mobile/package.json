@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "postversion": "react-native-version --never-amend",
-    "prettier": "prettier --write src"
+    "prettier": "prettier --write src",
+    "clean": "rm -rf node_modules .idea"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",

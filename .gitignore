@@ -6,7 +6,4 @@ node_modules
 package-lock.json
 default.nix
 .envrc
-sandbox/lesspass-passwordrules
-sandbox/lesspass-pure
-sandbox/lesspass-tld/top-1m.csv
-sandbox/infra
+.yarn

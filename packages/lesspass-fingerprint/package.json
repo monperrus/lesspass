@@ -5,18 +5,43 @@
   "license": "GPL-3.0",
   "author": "Guillaume Vincent <guillaume@oslab.fr>",
   "files": [
-    "src"
+    "dist"
   ],
-  "main": "src/index.js",
-  "browser": {
-    "./src/hmac.js": "./src/hmac.browser.js"
+  "type": "module",
+  "exports": {
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./src/hmac.ts": {
+      "node": {
+        "development": "./src/hmac.ts",
+        "types": "./dist/hmac.d.ts",
+        "default": "./dist/hmac.js"
+      },
+      "browser": {
+        "development": "./src/hmac.browser.ts",
+        "types": "./dist/hmac.browser.d.ts",
+        "default": "./dist/hmac.browser.js"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=14"
   },
   "scripts": {
-    "test": "yarn test:unit && yarn test:browser",
-    "test:unit": "mocha test --recursive",
-    "test:browser": "karma start test/karma.conf.js"
+    "test": "jest",
+    "build": "yarn clean && tsc",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
-    "lesspass-crypto": "^9.2.0"
+    "lesspass-crypto": "workspace:*"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.2",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
+    "typescript": "^5.0.2"
   }
 }

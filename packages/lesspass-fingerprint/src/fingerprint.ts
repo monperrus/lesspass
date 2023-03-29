@@ -1,4 +1,4 @@
-function getColor(color) {
+export function getColor(color: string) {
   const colors = [
     "#000000",
     "#074750",
@@ -19,7 +19,7 @@ function getColor(color) {
   return colors[index];
 }
 
-function getIcon(hash) {
+export function getIcon(hash: string) {
   const icons = [
     "fa-hashtag",
     "fa-heart",
@@ -72,7 +72,7 @@ function getIcon(hash) {
   return icons[index];
 }
 
-module.exports = function (hmacSHA256) {
+export default function generateFingerprint(hmacSHA256: string) {
   const fingerprint = [];
   const hash1 = hmacSHA256.substring(0, 6);
   fingerprint.push({
@@ -93,4 +93,4 @@ module.exports = function (hmacSHA256) {
   });
 
   return fingerprint;
-};
+}

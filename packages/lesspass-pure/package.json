@@ -14,7 +14,8 @@
     "test:watch": "vue-cli-service test:unit --watch",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "clean": "rm -rf node_modules dist"
   },
   "files": [
     "dist"
@@ -61,7 +62,7 @@
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^3.1.2",
-    "lesspass": "9.2.0",
+    "lesspass": "workspace:*",
     "lodash": "^4.17.21",
     "vue": "^2.6.12",
     "vue-polyglot": "^2.0.1",

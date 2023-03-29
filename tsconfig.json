@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "references": [
+    {
+      "path": "./packages/lesspass-crypto/tsconfig.json"
+    },
+    {
+      "path": "./packages/lesspass-fingerprint/tsconfig.json"
+    }
+  ]
+}

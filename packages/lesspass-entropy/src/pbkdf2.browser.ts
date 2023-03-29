@@ -1,10 +1,16 @@
-const {
+import {
   stringToArrayBuffer,
   arrayBufferToHex,
   getAlgorithm,
-} = require("lesspass-crypto");
+} from "lesspass-crypto";
 
-module.exports = function pbkdf2(password, salt, iterations, keylen, digest) {
+export default function pbkdf2(
+  password: string,
+  salt: string,
+  iterations: number,
+  keylen: number,
+  digest: string
+) {
   return window.crypto.subtle
     .importKey("raw", stringToArrayBuffer(password), "PBKDF2", false, [
       "deriveKey",
@@ -32,4 +38,4 @@ module.exports = function pbkdf2(password, salt, iterations, keylen, digest) {
         .exportKey("raw", derivedKey)
         .then((keyArray) => arrayBufferToHex(keyArray))
     );
-};
+}
